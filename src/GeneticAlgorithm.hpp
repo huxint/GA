@@ -18,7 +18,7 @@ namespace ga {
         struct Individual {
             double fitness; // 个体的适应度大小
             std::array<double, ChromosomeSize> chromosome;
-            auto const get(std::size_t i) const {
+            auto get(std::size_t i) const {
                 return chromosome[i];
             }
             auto &get(std::size_t i) {
@@ -52,7 +52,7 @@ namespace ga {
                          std::size_t tournament_size = 2,
                          double sigma = 0.1) {
             for (std::size_t i = 0; i < max_generations; ++i) {
-                evolve(selection_type, crossover_type, mutation_type);
+                evolve(selection_type, crossover_type, mutation_type, tournament_size, sigma);
             }
             return get_best_individual();
         }
@@ -166,7 +166,7 @@ namespace ga {
             Individual child1 = a, child2 = b;
             if (_uniform_dist(_rng) < _crossover_rate) {
                 for (std::size_t i = 0; i < ChromosomeSize; ++i) {
-                    std::uniform_int_distribution<> pointDist(1, ChromosomeSize - 2);
+                    std::uniform_int_distribution<> pointDist(0, ChromosomeSize - 1);
                     std::size_t point1 = pointDist(_rng);
                     std::size_t point2 = pointDist(_rng);
 
@@ -178,7 +178,7 @@ namespace ga {
                         std::swap(point1, point2);
                     }
 
-                    for (std::size_t i = point1; i < point2; ++i) {
+                    for (std::size_t i = point1; i <= point2; ++i) {
                         std::swap(child1.get(i), child2.get(i));
                     }
                 }
