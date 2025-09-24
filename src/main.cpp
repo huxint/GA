@@ -113,7 +113,7 @@ int main() {
                                                     {-500, 500},
                                                     {-500, 500}}});
 
-        test5.solve(1000, SelectionType::Tournament, CrossoverType::SinglePoint, MutationType::Gaussian, 4, 0.1);
+        test5.solve(1000, SelectionType::Tournament, CrossoverType::SinglePoint, MutationType::Gaussian, 2, 0.1);
         std::cout << "test5 best solution: " << test5 << std::endl;
         // 最小值是x_i=420.9687
         // 最小值是F(x_i)=-418.9829*10
@@ -128,7 +128,7 @@ int main() {
 
         GeneticAlgorithm<100, X, f> test6(false, 0.05, 0.8, Range<X>{{{-512, 512}, {-512, 512}}});
 
-        test6.solve(1000, SelectionType::Tournament, CrossoverType::SinglePoint, MutationType::Gaussian, 4, 0.1);
+        test6.solve(1000, SelectionType::Tournament, CrossoverType::SinglePoint, MutationType::Gaussian, 2, 0.1);
         std::cout << "test6 best solution: " << test6 << std::endl;
         // 最小值是x_i=512, x_j=404.2319
         // 最小值是F(x_i,x_j)=-959.6407
