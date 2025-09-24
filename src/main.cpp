@@ -11,7 +11,6 @@ using Range = std::array<std::pair<double, double>, N>;
 int main() {
     {
         constexpr auto X = 1; // 一元函数
-        using Range1 = Range<X>;
         auto f = [](std::array<double, X> x) -> double {
             return x[0] * x[0]; // 一元函数， x^2
         };
@@ -27,7 +26,6 @@ int main() {
 
     {
         constexpr auto X = 1; // 一元函数
-        using Range1 = Range<X>;
         auto f = [](std::array<double, X> x) -> double {
             return 5 * x[0] * std::exp(x[0]); // 一元函数， x^2
         };
@@ -42,8 +40,7 @@ int main() {
     }
 
     {
-        constexpr auto X = 5; // 5元函数
-        using Range1 = Range<X>;
+        constexpr auto X = 5;                            // 5元函数
         auto f = [](std::array<double, X> x) -> double { // 多峰函数
             const int A = 10;
 
@@ -64,8 +61,7 @@ int main() {
     }
 
     {
-        constexpr auto X = 2; // 2元函数
-        using Range1 = Range<X>;
+        constexpr auto X = 2;                            // 2元函数
         auto f = [](std::array<double, X> x) -> double { // Rosenbrock 函数
             return (1 - x[0]) * (1 - x[0]) + 100 * (x[1] - x[0] * x[0]) * (x[1] - x[0] * x[0]);
         };
@@ -78,8 +74,7 @@ int main() {
     }
 
     {
-        constexpr auto X = 2; // 2元函数
-        using Range1 = Range<X>;
+        constexpr auto X = 2;                            // 2元函数
         auto f = [](std::array<double, X> x) -> double { // Himmelblau 函数
             return (x[0] * x[0] + x[1] - 11) * (x[0] * x[0] + x[1] - 11) +
                    (x[0] + x[1] * x[1] - 7) * (x[0] + x[1] * x[1] - 7);
@@ -95,8 +90,7 @@ int main() {
 
     {
         // Schwefel 函数
-        constexpr auto X = 10; // 10元函数
-        using Range1 = Range<X>;
+        constexpr auto X = 10;                           // 10元函数
         auto f = [](std::array<double, X> x) -> double { // Schwefel 函数
             double res = 0;
             for (std::size_t i = 0; i < X; ++i) {
@@ -126,8 +120,7 @@ int main() {
     }
     {
         // Eggholder
-        constexpr auto X = 2; // 2元函数
-        using Range1 = Range<X>;
+        constexpr auto X = 2;                            // 2元函数
         auto f = [](std::array<double, X> x) -> double { // Eggholder 函数
             return -(x[1] + 47) * std::sin(std::sqrt(std::abs(x[0] / 2 + (x[1] + 47)))) -
                    x[0] * std::sin(std::sqrt(std::abs(x[0] - (x[1] + 47))));
